@@ -8,9 +8,14 @@
     "build": "tsc",
     "test": "jest",
     "lint": "eslint src/**/*.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "unit": "npm test"
   },
-  "keywords": ["calculator", "autodev", "testing"],
+  "keywords": [
+    "calculator",
+    "autodev",
+    "testing"
+  ],
   "author": "AutoDev Demo",
   "license": "MIT",
   "devDependencies": {
