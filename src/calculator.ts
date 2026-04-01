@@ -46,8 +46,10 @@ export class Calculator {
    * @throws Error if division by zero
    */
   divide(a: number, b: number): number {
-    // TODO: Issue #1 - Division by zero not handled properly
-    // TODO: Issue #3 - Add input validation
+    // Issue #1 - Division by zero handled
+    if (b === 0) {
+      throw new Error('Division by zero is not allowed');
+    }
     return a / b;
   }
 
