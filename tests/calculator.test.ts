@@ -49,12 +49,55 @@ describe('Calculator', () => {
     });
   });
 
-  // TODO: Issue #2 test - Missing power function
-  // test('power should calculate exponentiation', () => {
-  //   expect(calc.power(2, 3)).toBe(8);
-  //   expect(calc.power(5, 0)).toBe(1);
-  //   expect(calc.power(3, 2)).toBe(9);
-  // });
+  // Issue #2 tests - Power function
+  describe('power', () => {
+    test('should calculate base raised to positive exponent', () => {
+      expect(calc.power(2, 3)).toBe(8);
+      expect(calc.power(3, 2)).toBe(9);
+      expect(calc.power(5, 3)).toBe(125);
+    });
+
+    test('should return 1 for any base raised to power 0', () => {
+      expect(calc.power(2, 0)).toBe(1);
+      expect(calc.power(5, 0)).toBe(1);
+      expect(calc.power(0, 0)).toBe(1);
+      expect(calc.power(-5, 0)).toBe(1);
+    });
+
+    test('should return base for any base raised to power 1', () => {
+      expect(calc.power(2, 1)).toBe(2);
+      expect(calc.power(5, 1)).toBe(5);
+      expect(calc.power(-3, 1)).toBe(-3);
+      expect(calc.power(0, 1)).toBe(0);
+    });
+
+    test('should handle negative base with even exponent', () => {
+      expect(calc.power(-2, 2)).toBe(4);
+      expect(calc.power(-3, 4)).toBe(81);
+    });
+
+    test('should handle negative base with odd exponent', () => {
+      expect(calc.power(-2, 3)).toBe(-8);
+      expect(calc.power(-3, 3)).toBe(-27);
+    });
+
+    test('should handle zero base with positive exponent', () => {
+      expect(calc.power(0, 5)).toBe(0);
+      expect(calc.power(0, 10)).toBe(0);
+    });
+
+    test('should throw descriptive error for negative exponent', () => {
+      expect(() => calc.power(2, -1)).toThrow('Negative exponents are not supported');
+      expect(() => calc.power(5, -3)).toThrow('Negative exponents are not supported');
+      expect(() => calc.power(0, -1)).toThrow('Negative exponents are not supported');
+    });
+
+    test('should throw error for any negative exponent value', () => {
+      for (const exponent of [-1, -2, -10, -100]) {
+        expect(() => calc.power(2, exponent)).toThrow();
+      }
+    });
+  });
 });
 
 describe('Utils', () => {

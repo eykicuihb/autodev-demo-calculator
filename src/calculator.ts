@@ -77,6 +77,30 @@ export class Calculator {
     return Math.sqrt(num);
   }
 
-  // TODO: Issue #2 - Missing power function
-  // Need to implement: power(base: number, exponent: number): number
+  /**
+   * Calculate power (base raised to exponent)
+   * @param base - The base number
+   * @param exponent - The exponent (must be non-negative integer)
+   * @returns base raised to the power of exponent
+   * @throws Error if exponent is negative
+   */
+  power(base: number, exponent: number): number {
+    if (exponent < 0) {
+      throw new Error('Negative exponents are not supported');
+    }
+
+    if (exponent === 0) {
+      return 1;
+    }
+
+    if (exponent === 1) {
+      return base;
+    }
+
+    let result = 1;
+    for (let i = 0; i < exponent; i++) {
+      result *= base;
+    }
+    return result;
+  }
 }
